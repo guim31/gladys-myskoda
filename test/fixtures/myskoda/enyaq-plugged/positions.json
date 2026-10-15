@@ -1,0 +1,12 @@
+{
+  "positions": [
+    {
+      "type": "VEHICLE",
+      "gpsCoordinates": {
+        "latitude": 50.103,
+        "longitude": 14.403
+      }
+    }
+  ],
+  "errors": []
+}

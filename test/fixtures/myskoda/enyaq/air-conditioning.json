@@ -1,0 +1,46 @@
+{
+  "estimatedDateTimeToReachTargetTemperature": "2025-02-09T10:24:21.031298763Z",
+  "state": "OFF",
+  "runningRequests": [],
+  "targetTemperature": {
+    "temperatureValue": 21.0,
+    "unitInCar": "CELSIUS"
+  },
+  "airConditioningAtUnlock": false,
+  "windowHeatingEnabled": true,
+  "steeringWheelPosition": "LEFT",
+  "seatHeatingActivated": {
+    "frontLeft": true,
+    "frontRight": true
+  },
+  "chargerConnectionState": "DISCONNECTED",
+  "chargerLockState": "UNLOCKED",
+  "windowHeatingState": {
+    "front": "OFF",
+    "rear": "OFF",
+    "unspecified": "INVALID"
+  },
+  "timers": [
+    {
+      "id": 1,
+      "enabled": false,
+      "time": "22:20",
+      "type": "ONE_OFF",
+      "selectedDays": ["TUESDAY"]
+    },
+    {
+      "id": 2,
+      "enabled": false,
+      "time": "00:00",
+      "type": "ONE_OFF",
+      "selectedDays": ["SATURDAY"]
+    }
+  ],
+  "carCapturedTimestamp": "2025-02-09T08:52:40Z",
+  "outsideTemperature": {
+    "temperatureValue": -1.0,
+    "temperatureUnit": "CELSIUS",
+    "carCapturedTimestamp": "2025-02-09T08:52:37.285Z"
+  },
+  "errors": []
+}

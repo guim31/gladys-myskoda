@@ -1,0 +1,139 @@
+{
+  "vin": "TMBMOCK0000000007",
+  "name": "Kamiq",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-007-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB_ODP",
+  "specification": {
+    "title": "Škoda Kamiq",
+    "manufacturingDate": "2021-02-10",
+    "model": "Kamiq",
+    "modelYear": "2021",
+    "body": "Crossover",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "NW44KD",
+    "engine": {
+      "type": "TSI",
+      "powerInKW": 110,
+      "capacityInLiters": 1.5
+    },
+    "gearbox": {
+      "type": "A7F"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": []
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": []
+      },
+      {
+        "id": "GEO_FENCE",
+        "statuses": []
+      },
+      {
+        "id": "HONK_AND_FLASH",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "NEWS",
+        "statuses": ["LICENSE_MISSING"]
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "SPEED_ALERT",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_FUEL",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "ICE_VEHICLE_RTS",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "FUEL_STATUS",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      }
+    ]
+  }
+}

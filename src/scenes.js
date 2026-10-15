@@ -1,41 +1,52 @@
 // -----------------------------------------------------------------------------
-// Scene actions (SDK v0.14+, Gladys 5.1+).
+// Scene actions (manifest `scene_actions`, SDK v0.14+, Gladys 5.1+).
 //
-// A scene action is an OPERATION a scene author places in a scene, with
-// parameters and a result: "identify this device", "take a snapshot", "clean
-// these rooms". Each one is declared in the manifest `scene_actions` field
-// (key, label, `fields` in the config_schema grammar, scalar `outputs`) and
-// handled here, keyed by that same `key`; index.js registers every entry with
-// `gladys.onSceneAction(key, ...)`.
+// What a scene already does through the device features (start or stop the
+// charge or the climate, set the charge limit or the climate temperature) is
+// not repeated. The actions add what no feature offers:
+//   - `refresh_vehicle` reads the car's state from the cloud now (without
+//     waking the car) and gives it to the next actions of the scene;
+//   - `lock_vehicle` locks the car (S-PIN of the configuration);
+//   - `unlock_vehicle` unlocks it, only when "Allow unlocking" is on in the
+//     configuration (off by default): never a switch a misclick can flip.
 //
-// Scene TRIGGERS are the other direction ("this happened"): they are fired by
-// the device that observes the event, see src/devices/motionSensor.js.
-//
-// The rules that matter:
-//   - `fields` arrive RESOLVED: scene variables substituted, defaults applied,
-//     validated by the core; a `"source": "devices"` field is the chosen
-//     device external_id;
-//   - resolve an object of the declared `outputs` (scalars only), readable by
-//     the following actions of the scene, or `undefined` for none. Keys not
-//     declared in the manifest are dropped by the core;
-//   - throwing fails THIS action only: the scene logs it and continues. A
-//     scene action is never a condition: return an output and let the scene
-//     author gate on it;
-//   - never fire a scene event as a consequence of a received action: a scene
-//     bound to that event would loop through the integration.
+// Fields arrive resolved and validated by the core, without defaults (a
+// manifest default is not applied to an action). Throwing fails this action
+// only, the scene goes on.
 // -----------------------------------------------------------------------------
 
-import { createLogger } from '@gladysassistant/integration-sdk';
-import { signalDevice } from './devices/index.js';
+import { pluggedOf, rangeOf } from './devices/vehicle.js';
 
-const logger = createLogger({ name: 'scenes' });
-
-export const SCENE_ACTIONS = {
-  // The ack is awaited under the action's `timeout_seconds` (15 s in the
-  // manifest), counted from the moment the scene reaches the action.
-  async identify_device(gladys, { fields, config }) {
-    logger.info(`Scene action identify_device <- ${fields.device}`);
-    const signalled = await signalDevice(gladys, fields.device, config);
-    return { signalled };
-  },
+export const SCENE_ACTION_KEYS = {
+  REFRESH_VEHICLE: 'refresh_vehicle',
+  LOCK_VEHICLE: 'lock_vehicle',
+  UNLOCK_VEHICLE: 'unlock_vehicle',
 };
+
+const known = (value) => value !== undefined && value !== null;
+
+export function createSceneActions(runtime) {
+  return {
+    async [SCENE_ACTION_KEYS.REFRESH_VEHICLE]({ fields }) {
+      const snapshot = await runtime.refresh(fields.device);
+      const outputs = {};
+      if (Number.isFinite(snapshot.batteryLevel)) {
+        outputs.battery_level = Math.round(snapshot.batteryLevel);
+      }
+      const range = rangeOf(snapshot);
+      if (Number.isFinite(range)) outputs.range_km = Math.round(range);
+      if (known(pluggedOf(snapshot))) outputs.plugged = pluggedOf(snapshot);
+      if (known(snapshot.charging)) outputs.charging = snapshot.charging;
+      if (known(snapshot.locked)) outputs.locked = snapshot.locked;
+      return outputs;
+    },
+
+    async [SCENE_ACTION_KEYS.LOCK_VEHICLE]({ fields }) {
+      await runtime.access(fields.device, 'lock');
+    },
+
+    async [SCENE_ACTION_KEYS.UNLOCK_VEHICLE]({ fields }) {
+      await runtime.access(fields.device, 'unlock');
+    },
+  };
+}

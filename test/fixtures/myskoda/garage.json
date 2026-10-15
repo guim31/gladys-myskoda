@@ -1,0 +1,103 @@
+{
+  "vehicles": [
+    {
+      "vin": "TMBMOCK0000000001",
+      "name": "Enyaq",
+      "state": "ACTIVATED",
+      "devicePlatform": "WCAR",
+      "systemModelId": "5AZJK2",
+      "title": "Škoda Enyaq",
+      "priority": 1,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000002",
+      "name": "Elroq",
+      "state": "ACTIVATED",
+      "devicePlatform": "WCAR",
+      "systemModelId": "PYLJK2",
+      "title": "Škoda Elroq",
+      "priority": 2,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000003",
+      "name": "Enyaq",
+      "state": "ACTIVATED",
+      "devicePlatform": "WCAR",
+      "systemModelId": "5AZJJ2",
+      "title": "Škoda Enyaq",
+      "priority": 3,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000004",
+      "name": "Kodiaq",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB_ODP",
+      "systemModelId": "PS7DYC",
+      "title": "Škoda Kodiaq",
+      "priority": 4,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000005",
+      "name": "Octavia",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB_ODP",
+      "systemModelId": "NX34VC",
+      "title": "Škoda Octavia",
+      "priority": 5,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000006",
+      "name": "CitigoE iV",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB",
+      "systemModelId": "NE13E2",
+      "title": "Škoda CitigoE iV",
+      "priority": 6,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000007",
+      "name": "Kamiq",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB_ODP",
+      "systemModelId": "NW44KD",
+      "title": "Škoda Kamiq",
+      "priority": 7,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000008",
+      "name": "Kodiaq",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB_ODP",
+      "systemModelId": "PS7D6Z",
+      "title": "Škoda Kodiaq",
+      "priority": 8,
+      "renders": [],
+      "compositeRenders": []
+    },
+    {
+      "vin": "TMBMOCK0000000009",
+      "name": "Karoq",
+      "state": "ACTIVATED",
+      "devicePlatform": "MBB_ODP",
+      "systemModelId": "NU74ND",
+      "title": "Škoda Karoq",
+      "priority": 9,
+      "renders": [],
+      "compositeRenders": []
+    }
+  ]
+}

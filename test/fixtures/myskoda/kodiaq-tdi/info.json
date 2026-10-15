@@ -1,0 +1,160 @@
+{
+  "vin": "TMBMOCK0000000008",
+  "name": "Kodiaq",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-008-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB_ODP",
+  "specification": {
+    "title": "Škoda Kodiaq",
+    "manufacturingDate": "2024-05-15",
+    "model": "Kodiaq",
+    "modelYear": "2024",
+    "body": "SUV",
+    "trimLevel": "Exclusive Selection",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "PS7D6Z",
+    "engine": {
+      "type": "TDI",
+      "powerInKW": 142,
+      "capacityInLiters": 2.0
+    },
+    "gearbox": {
+      "type": "A7A"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": []
+      },
+      {
+        "id": "AUXILIARY_HEATING",
+        "statuses": []
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": []
+      },
+      {
+        "id": "EMERGENCY_CALLING",
+        "statuses": []
+      },
+      {
+        "id": "HONK_AND_FLASH",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "THEFT_WARNING",
+        "statuses": []
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "AUXILIARY_HEATING_TIMERS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_FUEL",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "CAR_FEEDBACK",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": []
+      },
+      {
+        "id": "AUXILIARY_HEATING_TEMPERATURE_SETTING",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_SPEECH_GPS",
+        "statuses": []
+      },
+      {
+        "id": "FUEL_STATUS",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      },
+      {
+        "id": "CARE_AND_INSURANCE",
+        "statuses": []
+      },
+      {
+        "id": "EXTENDED_CHARGING_SETTINGS",
+        "statuses": []
+      }
+    ]
+  }
+}

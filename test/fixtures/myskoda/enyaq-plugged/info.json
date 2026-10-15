@@ -1,0 +1,212 @@
+{
+  "vin": "TMBMOCK0000000003",
+  "name": "Enyaq",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-003-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "WCAR",
+  "softwareVersion": "3.0",
+  "specification": {
+    "title": "Škoda Enyaq",
+    "manufacturingDate": "2022-03-24",
+    "model": "Enyaq",
+    "modelYear": "2022",
+    "body": "SUV",
+    "trimLevel": "80",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "5AZJJ2",
+    "maxChargingPowerInKW": 125,
+    "battery": {
+      "capacityInKWh": 77
+    },
+    "engine": {
+      "type": "iV",
+      "powerInKW": 150
+    },
+    "gearbox": {
+      "type": "E1H"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "AUTOMATION",
+        "statuses": []
+      },
+      {
+        "id": "BATTERY_CHARGING_CARE",
+        "statuses": []
+      },
+      {
+        "id": "BATTERY_SUPPORT",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_PROFILES",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_STATIONS",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "MAP_UPDATE",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_INFORMATION",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "POI_SEARCH",
+        "statuses": []
+      },
+      {
+        "id": "READINESS",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "ROUTING",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "TRAFFIC_INFORMATION",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "WEB_RADIO",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_TIMERS",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SMART_SETTINGS",
+        "statuses": []
+      },
+      {
+        "id": "POWERPASS_TARIFFS",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SAVE_AND_ACTIVATE",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_PLANNING_5_CHARGERS",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_MEB",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_SERVICES_BACKUPS",
+        "statuses": []
+      },
+      {
+        "id": "LOYALTY_PROGRAM_WORLDWIDE",
+        "statuses": []
+      },
+      {
+        "id": "EV_ROUTE_PLANNING",
+        "statuses": []
+      },
+      {
+        "id": "CHARGE_MODE_SELECTION",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_SPEECH_GPS",
+        "statuses": []
+      },
+      {
+        "id": "GUEST_USER_MANAGEMENT",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATION_IMPORT_UPGRADABLE",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "WINDOW_HEATING",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING",
+        "statuses": []
+      },
+      {
+        "id": "EXTENDED_CHARGING_SETTINGS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP_TRIGGER",
+        "statuses": []
+      }
+    ]
+  }
+}

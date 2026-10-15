@@ -1,0 +1,14 @@
+{
+  "overall": {
+    "doorsLocked": "UNKNOWN",
+    "locked": "UNKNOWN",
+    "doors": "UNKNOWN",
+    "windows": "UNKNOWN",
+    "lights": "OFF"
+  },
+  "detail": {
+    "sunroof": "UNSUPPORTED",
+    "trunk": "UNKNOWN",
+    "bonnet": "UNKNOWN"
+  }
+}

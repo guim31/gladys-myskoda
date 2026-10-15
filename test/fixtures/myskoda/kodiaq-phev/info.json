@@ -1,0 +1,172 @@
+{
+  "vin": "TMBMOCK0000000004",
+  "name": "Kodiaq",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-004-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB_ODP",
+  "specification": {
+    "title": "Škoda Kodiaq",
+    "manufacturingDate": "2024-08-15",
+    "model": "Kodiaq",
+    "modelYear": "2024",
+    "body": "SUV",
+    "trimLevel": "Selection iV",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "PS7DYC",
+    "engine": {
+      "type": "TSI PHEV",
+      "powerInKW": 150,
+      "capacityInLiters": 1.5
+    },
+    "gearbox": {
+      "type": "A6F"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": []
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": []
+      },
+      {
+        "id": "EMERGENCY_CALLING",
+        "statuses": []
+      },
+      {
+        "id": "HONK_AND_FLASH",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "THEFT_WARNING",
+        "statuses": []
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "POWERPASS_TARIFFS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_FUEL",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SAVE_AND_ACTIVATE",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_MQB",
+        "statuses": []
+      },
+      {
+        "id": "FLEET_SUPPORTED",
+        "statuses": []
+      },
+      {
+        "id": "LOYALTY_PROGRAM_WORLDWIDE",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_SPEECH_GPS",
+        "statuses": []
+      },
+      {
+        "id": "FUEL_STATUS",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "WINDOW_HEATING",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING",
+        "statuses": []
+      },
+      {
+        "id": "EXTENDED_CHARGING_SETTINGS",
+        "statuses": []
+      }
+    ]
+  }
+}

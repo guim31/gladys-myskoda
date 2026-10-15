@@ -1,0 +1,24 @@
+{
+  "isVehicleInSavedLocation": false,
+  "settings": {
+    "availableChargeModes": []
+  },
+  "errors": [
+    {
+      "type": "CARE_MODE_IS_NOT_AVAILABLE",
+      "description": "Care mode is not available."
+    },
+    {
+      "type": "AUTO_UNLOCK_IS_NOT_AVAILABLE",
+      "description": "Auto unlock is not available."
+    },
+    {
+      "type": "MAX_CHARGE_CURRENT_IS_NOT_AVAILABLE",
+      "description": "Maximal charge current is not available."
+    },
+    {
+      "type": "CHARGE_LIMIT_IS_NOT_AVAILABLE",
+      "description": "Charge limit is not available."
+    }
+  ]
+}

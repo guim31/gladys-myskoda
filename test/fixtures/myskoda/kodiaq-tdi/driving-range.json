@@ -1,0 +1,12 @@
+{
+  "carType": "diesel",
+  "adBlueRange": 10500,
+  "totalRangeInKm": 650,
+  "primaryEngineRange": {
+    "engineType": "diesel",
+    "currentSoCInPercent": 83,
+    "currentFuelLevelInPercent": 83,
+    "remainingRangeInKm": 650
+  },
+  "carCapturedTimestamp": "2024-11-08T09:30:13Z"
+}

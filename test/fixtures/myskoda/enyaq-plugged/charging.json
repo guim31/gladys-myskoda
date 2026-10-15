@@ -1,0 +1,24 @@
+{
+  "isVehicleInSavedLocation": false,
+  "status": {
+    "chargingRateInKilometersPerHour": 0.0,
+    "chargePowerInKw": 0.0,
+    "remainingTimeToFullyChargedInMinutes": 0,
+    "state": "READY_FOR_CHARGING",
+    "battery": {
+      "remainingCruisingRangeInMeters": 261000,
+      "stateOfChargeInPercent": 70
+    }
+  },
+  "settings": {
+    "targetStateOfChargeInPercent": 70,
+    "preferredChargeMode": "MANUAL",
+    "availableChargeModes": ["MANUAL"],
+    "chargingCareMode": "ACTIVATED",
+    "autoUnlockPlugWhenCharged": "OFF",
+    "maxChargeCurrentAc": "MAXIMUM",
+    "batterySupport": "ENABLED"
+  },
+  "carCapturedTimestamp": "2024-12-04T13:32:15Z",
+  "errors": []
+}

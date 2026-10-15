@@ -1,0 +1,27 @@
+{
+  "isVehicleInSavedLocation": false,
+  "status": {
+    "chargingRateInKilometersPerHour": 45.0,
+    "chargePowerInKw": 10.0,
+    "remainingTimeToFullyChargedInMinutes": 100,
+    "state": "CHARGING",
+    "battery": {
+      "remainingCruisingRangeInMeters": 15000,
+      "stateOfChargeInPercent": 16
+    }
+  },
+  "settings": {
+    "targetStateOfChargeInPercent": 100,
+    "preferredChargeMode": "MANUAL",
+    "availableChargeModes": ["MANUAL"],
+    "autoUnlockPlugWhenCharged": "OFF",
+    "maxChargeCurrentAc": "MAXIMUM"
+  },
+  "carCapturedTimestamp": "2025-01-12T09:25:58Z",
+  "errors": [
+    {
+      "type": "CARE_MODE_IS_NOT_AVAILABLE",
+      "description": "Care mode is not available."
+    }
+  ]
+}
