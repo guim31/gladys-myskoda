@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-15
+
 ### Added
 
 - Škoda cars of a MySkoda account (Škoda ID) in Gladys: one device per car,
@@ -37,4 +39,5 @@ the notes of the version's GitHub Release.
 - Texts in English, French, German and Spanish, and a documentation in the four
   languages.
 
-[Unreleased]: https://github.com/guim31/gladys-myskoda/commits/main
+[Unreleased]: https://github.com/guim31/gladys-myskoda/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/guim31/gladys-myskoda/releases/tag/v1.0.1
