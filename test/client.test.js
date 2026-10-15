@@ -16,14 +16,14 @@ const T0 = Date.UTC(2026, 9, 15, 10, 0, 0);
 const page = (name) =>
   readFile(new URL(`./fixtures/myskoda/auth/${name}.html`, import.meta.url), 'utf8');
 
-function setup({ password = PASSWORD, session = {} } = {}) {
+function setup({ email = EMAIL, password = PASSWORD, session = {} } = {}) {
   let clock = T0;
   const now = () => clock;
   const cloud = createFakeSkoda({ now });
   const saved = { ...session };
   const client = createSkodaClient({
     http: createHttp({ fetchImpl: cloud.fetch }),
-    credentials: { email: EMAIL, password },
+    credentials: { email, password },
     session: { get: () => saved, set: (partial) => Object.assign(saved, partial) },
     now,
   });
@@ -94,6 +94,26 @@ test('sign-in refusals: wrong password, throttled account, terms to accept', asy
     const err = await client.connect().catch((e) => e);
     assert.ok(!err.message.includes(EMAIL) && !err.message.includes('wrong'), err.message);
   }
+});
+
+test('an unknown e-mail address: the registration page, never the password', async () => {
+  // What a probe of the real service showed: the identifier step redirects an
+  // unknown address to /signin-service/v1/<client>/register.
+  const unknown = setup({ email: 'nobody@example.com' });
+  const err = await unknown.client.connect().catch((e) => e);
+  assert.equal(err.kind, ERROR_KINDS.UNKNOWN_ACCOUNT);
+  assert.equal(unknown.cloud.passwordsPosted, 0, 'the password is not posted');
+  assert.ok(!unknown.cloud.calls.some((c) => c.path.endsWith('/register')), 'not even opened');
+
+  const other = setup();
+  other.cloud.signInOutcome = 'no-password-page';
+  await assert.rejects(other.client.connect(), { kind: ERROR_KINDS.UNKNOWN_ACCOUNT });
+  assert.equal(other.cloud.passwordsPosted, 0);
+
+  const inactive = setup();
+  inactive.cloud.signInOutcome = 'inactive';
+  await assert.rejects(inactive.client.connect(), { kind: ERROR_KINDS.ACCOUNT_INACTIVE });
+  assert.equal(inactive.cloud.passwordsPosted, 0);
 });
 
 test('tokens: refreshed without the password, signed in again once the refresh is refused', async () => {

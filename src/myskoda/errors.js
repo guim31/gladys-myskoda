@@ -13,6 +13,11 @@ export const ERROR_KINDS = {
   // Wrong e-mail address or password: stop, the user must fix the
   // configuration. Insisting could lock the account.
   AUTH: 'auth',
+  // The e-mail address is no Škoda ID: the sign-in sends it to the
+  // registration page. The password is then never sent.
+  UNKNOWN_ACCOUNT: 'unknown-account',
+  // The Škoda ID exists but is not activated yet (confirmation e-mail).
+  ACCOUNT_INACTIVE: 'account-inactive',
   // The account must accept new terms or a consent in the MySkoda app first.
   CONSENT: 'consent',
   // The sign-in service refuses for now (too many attempts): stop too.
@@ -57,14 +62,23 @@ export class SkodaError extends Error {
 // myskoda, weconnect, CarConnectivity).
 const SIGN_IN_ERRORS = {
   'login.errors.password_invalid': ERROR_KINDS.AUTH,
-  'login.errors.user_not_found': ERROR_KINDS.AUTH,
+  'login.errors.user_not_found': ERROR_KINDS.UNKNOWN_ACCOUNT,
   'login.error.throttled': ERROR_KINDS.BLOCKED,
   'login.errors.throttled': ERROR_KINDS.BLOCKED,
 };
 
 /** The error of a sign-in `error=` code (an unknown one is a refusal too). */
 export function signInError(code) {
-  const kind = SIGN_IN_ERRORS[code] ?? (/throttl|locked|captcha/i.test(code) ? 'blocked' : 'auth');
+  const text = String(code);
+  const kind =
+    SIGN_IN_ERRORS[text] ??
+    (/throttl|locked|captcha/i.test(text)
+      ? ERROR_KINDS.BLOCKED
+      : /not_?activ|not_?verif|unverif|inactive|not_?confirm/i.test(text)
+        ? ERROR_KINDS.ACCOUNT_INACTIVE
+        : /not_?found|unknown|register/i.test(text)
+          ? ERROR_KINDS.UNKNOWN_ACCOUNT
+          : ERROR_KINDS.AUTH);
   return new SkodaError(kind, `Sign-in refused (${String(code).slice(0, 60)})`, { code });
 }
 

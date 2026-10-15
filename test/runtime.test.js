@@ -338,6 +338,21 @@ test('a refused password: no new sign-in until the configuration is saved again'
   await world.stop();
 });
 
+test('an e-mail address Škoda does not know: said in the status, no retry', async () => {
+  const world = await createWorld({ ...ENYAQ_ONLY, config: { email: 'nobody@example.com' } });
+  assert.equal(world.runtime.blocked, 'unknown-account');
+  assert.deepEqual(world.fake.connectionStatus, {
+    connected: false,
+    message: MESSAGES['unknown-account'],
+  });
+  for (let i = 0; i < 3; i += 1) await world.tick(HOUR);
+  assert.equal(world.skoda.passwordsPosted, 0, 'the password never left');
+  assert.equal(world.skoda.calls.filter((c) => c.path === '/oidc/v1/authorize').length, 1);
+  const ack = await world.fake.action('test_connection', {});
+  assert.deepEqual(ack, { success: false, error: MESSAGES['unknown-account'] });
+  await world.stop();
+});
+
 test('new terms to accept in the app: said in the status, no retry', async () => {
   const world = await createWorld({ ...ENYAQ_ONLY, connect: false });
   world.skoda.signInOutcome = 'terms';

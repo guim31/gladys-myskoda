@@ -230,7 +230,13 @@ csrf_token: '…' }` (pas du JSON : clés sans guillemets) ; on lit `templateMod
 'manual'`, `Location` relatives possibles) jusqu'à `myskoda://redirect/login/?code=…`. Refus :
   `error=login.errors.password_invalid` (→ `auth`), `error=login.error.throttled` (→ `blocked`),
   redirection vers `terms-and-conditions` ou `consent/marketing` (→ `consent`, à accepter dans
-  l'appli). Ces trois cas arrêtent tout jusqu'au prochain enregistrement de la configuration.
+  l'appli). Ces cas arrêtent tout jusqu'au prochain enregistrement de la configuration.
+- **E-mail inconnu** (sonde réelle de l'orchestrateur, 15/10/2026) : `POST …/login/identifier`
+  répond **303 vers `/signin-service/v1/<client>/register`** (page d'inscription, 200, qui porte
+  elle aussi un `_IDK` avec HMAC). Poster le mot de passe ensuite donne un **500**. Toute redirection
+  vers `/register` (ou page sans formulaire de mot de passe, `template` ≠ `loginAuthenticate`) après
+  l'identifiant = `unknown-account`, bloquant, et le mot de passe n'est jamais envoyé. Un code
+  `error=` d'activation (`not_activated`, `unverified`…) = `account-inactive`.
 - **Jetons** : accès 1 h, rafraîchissement ~180 jours (`refresh-token?tokenType=CONNECT`). Le jeton
   d'accès est renouvelé 10 min avant expiration ; un 401 force un renouvellement et un seul nouvel
   essai ; un rafraîchissement refusé (4xx) refait une connexion par mot de passe, une fois.

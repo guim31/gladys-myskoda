@@ -62,7 +62,13 @@ export const SCENE_TRIGGER_KEYS = { CHARGE_FINISHED: 'charge_finished' };
 
 // Errors the user must act on: no sign-in attempt until the configuration
 // changes. Insisting could lock the account.
-const BLOCKING_KINDS = new Set([ERROR_KINDS.AUTH, ERROR_KINDS.CONSENT, ERROR_KINDS.BLOCKED]);
+const BLOCKING_KINDS = new Set([
+  ERROR_KINDS.AUTH,
+  ERROR_KINDS.UNKNOWN_ACCOUNT,
+  ERROR_KINDS.ACCOUNT_INACTIVE,
+  ERROR_KINDS.CONSENT,
+  ERROR_KINDS.BLOCKED,
+]);
 // A refusal of the endpoint itself: the car (or the account) does not offer it.
 const REFUSALS = new Set([
   ERROR_KINDS.NOT_SUPPORTED,

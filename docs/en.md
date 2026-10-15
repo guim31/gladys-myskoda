@@ -144,6 +144,10 @@ does not change is sent to Gladys again every 12 hours, so it never shows as sta
 
 ## Troubleshooting
 
+- **"Škoda does not know this e-mail address"**: the identity service has no Škoda ID for it (it
+  offered to create one). Enter the address you sign in to the MySkoda app with, then save; the
+  password is not sent for an unknown address.
+- **"Your Škoda ID is not activated yet"**: confirm it with the e-mail Škoda sent, then save again.
 - **"The account refused the sign-in"**: check the e-mail address and the password (the ones of the
   app), then save. The integration does not try again on its own, to avoid locking the account.
 - **"Your account must accept new terms first"**: open the MySkoda app, accept them, then save the

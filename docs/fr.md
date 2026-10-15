@@ -156,6 +156,11 @@ valeur qui ne change pas est renvoyée à Gladys toutes les 12 heures, pour ne j
 
 ## Dépannage
 
+- **« Škoda ne connaît pas cette adresse e-mail »** : le service d'identité n'a aucun Škoda ID pour
+  elle (il proposait d'en créer un). Saisissez l'adresse avec laquelle vous vous connectez à
+  l'application MySkoda, puis enregistrez ; le mot de passe n'est pas envoyé pour une adresse inconnue.
+- **« Votre Škoda ID n'est pas encore activé »** : confirmez-le avec l'e-mail envoyé par Škoda, puis
+  enregistrez à nouveau.
 - **« Le compte a refusé la connexion »** : vérifiez l'adresse e-mail et le mot de passe (ceux de
   l'application), puis enregistrez. L'intégration ne réessaie pas d'elle-même, pour ne pas bloquer le
   compte.

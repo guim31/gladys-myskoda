@@ -29,6 +29,9 @@ the notes of the version's GitHub Release.
 - Dashboard widget "My Škoda": battery, range, charge, climate, doors, last
   update, and buttons to act on the car.
 - Configuration actions "Test the connection" and "Check the S-PIN".
+- Clear statuses when the sign-in cannot go on: e-mail address unknown to Škoda
+  (the password is then never sent), Škoda ID not activated, terms to accept
+  in the app, too many attempts.
 - Reads on the integration's own timer, every 15 to 120 minutes (30 by
   default), under 30 calls an hour per account; the car is never woken up.
 - Texts in English, French, German and Spanish, and a documentation in the four

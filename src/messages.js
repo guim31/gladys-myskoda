@@ -20,6 +20,18 @@ export const MESSAGES = {
     de: 'Das Konto hat die Anmeldung abgelehnt: Prüfe E-Mail-Adresse und Passwort und speichere dann.',
     es: 'La cuenta ha rechazado el inicio de sesión: revise el correo y la contraseña, y guarde.',
   },
+  [ERROR_KINDS.UNKNOWN_ACCOUNT]: {
+    en: 'Škoda does not know this e-mail address: enter the one of your Škoda ID (MySkoda app), then save.',
+    fr: 'Škoda ne connaît pas cette adresse e-mail : saisissez celle de votre Škoda ID (appli MySkoda), puis enregistrez.',
+    de: 'Škoda kennt diese E-Mail-Adresse nicht: Gib die deiner Škoda ID (MySkoda-App) ein und speichere dann.',
+    es: 'Škoda no conoce este correo electrónico: introduzca el de su Škoda ID (app MySkoda) y guarde.',
+  },
+  [ERROR_KINDS.ACCOUNT_INACTIVE]: {
+    en: 'Your Škoda ID is not activated yet: confirm it with the e-mail Škoda sent you, then save again.',
+    fr: 'Votre Škoda ID n’est pas encore activé : confirmez-le avec l’e-mail envoyé par Škoda, puis enregistrez à nouveau.',
+    de: 'Deine Škoda ID ist noch nicht aktiviert: Bestätige sie mit der E-Mail von Škoda und speichere dann erneut.',
+    es: 'Su Škoda ID aún no está activado: confírmelo con el correo que le envió Škoda y vuelva a guardar.',
+  },
   [ERROR_KINDS.CONSENT]: {
     en: 'Your account must accept new terms first: open the MySkoda app, accept them, then save here again.',
     fr: 'Votre compte doit d’abord accepter de nouvelles conditions : ouvrez l’appli MySkoda, acceptez-les, puis enregistrez à nouveau ici.',
@@ -149,6 +161,18 @@ export const WIDGET_ISSUES = {
     fr: 'Connexion refusée (configuration)',
     de: 'Anmeldung abgelehnt (Konfiguration)',
     es: 'Inicio de sesión rechazado',
+  },
+  [ERROR_KINDS.UNKNOWN_ACCOUNT]: {
+    en: 'Unknown e-mail address',
+    fr: 'Adresse e-mail inconnue',
+    de: 'Unbekannte E-Mail-Adresse',
+    es: 'Correo electrónico desconocido',
+  },
+  [ERROR_KINDS.ACCOUNT_INACTIVE]: {
+    en: 'Škoda ID not activated',
+    fr: 'Škoda ID non activé',
+    de: 'Škoda ID nicht aktiviert',
+    es: 'Škoda ID no activado',
   },
   [ERROR_KINDS.CONSENT]: {
     en: 'Terms to accept in the app',

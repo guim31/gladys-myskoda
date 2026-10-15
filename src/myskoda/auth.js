@@ -83,6 +83,18 @@ function searchParam(url, name) {
 /** The `error=` code of a sign-in URL, if any. */
 const errorCodeOf = (url) => searchParam(url, 'error');
 
+/** The registration page of the identity service (a probe saw `/signin-service/v1/<client>/register`). */
+function isRegistration(url) {
+  try {
+    return /\/(register|registration|signup)(\/|$)/.test(new URL(url).pathname);
+  } catch {
+    return false;
+  }
+}
+
+const unknownAccount = () =>
+  new SkodaError(ERROR_KINDS.UNKNOWN_ACCOUNT, 'No Škoda ID for this e-mail address');
+
 /**
  * The VW Group sign-in, then the MySkoda token exchange.
  * @param {object} http src/myskoda/http.js
@@ -101,6 +113,8 @@ export function createAuth({ http }) {
       if (/terms-and-conditions|consent\/marketing/.test(location)) {
         throw new SkodaError(ERROR_KINDS.CONSENT, 'Terms or a consent to accept in the app');
       }
+      // An e-mail address that is no Škoda ID goes to the registration page.
+      if (isRegistration(location)) throw unknownAccount();
       current = await http.request(location, { cookies: true, headers: { Accept: 'text/html' } });
     }
     throw new SkodaError(ERROR_KINDS.API, 'Too many sign-in redirects');
@@ -156,12 +170,24 @@ export function createAuth({ http }) {
         form: { relayState: first.relayState, email, hmac: first.hmac, _csrf: first.csrf },
       }),
     );
-    const second = checkPage(identified, 'E-mail address');
-    if (second.error) throw signInError(String(second.error));
     // An unknown address lands on the registration page, not the password one.
-    if (second.postAction && second.postAction !== 'login/authenticate') {
-      throw new SkodaError(ERROR_KINDS.AUTH, 'Unknown account (no password page)');
+    if (isRegistration(identified.url)) throw unknownAccount();
+    if (/terms-and-conditions/.test(identified.url)) {
+      throw new SkodaError(ERROR_KINDS.CONSENT, 'Terms or a consent to accept in the app');
     }
+    let second;
+    try {
+      second = checkPage(identified, 'E-mail address');
+    } catch (err) {
+      // A page without the login form: never post the password to it.
+      if (err.kind === ERROR_KINDS.API) throw unknownAccount();
+      throw err;
+    }
+    if (second.error) throw signInError(String(second.error));
+    // Any page but the password one: the address is not a usable Škoda ID.
+    const passwordPage =
+      second.template === 'loginAuthenticate' || second.postAction === 'login/authenticate';
+    if (!passwordPage) throw unknownAccount();
 
     // 3. The password: redirects to the app link that carries the code.
     const authenticated = await follow(
@@ -189,8 +215,9 @@ export function createAuth({ http }) {
         throw new SkodaError(ERROR_KINDS.API, 'Sign-in ended on a page without a code');
       }
       throw new SkodaError(
-        ERROR_KINDS.API,
+        authenticated.status >= 500 ? ERROR_KINDS.SERVER : ERROR_KINDS.API,
         `Sign-in ended without a code (HTTP ${authenticated.status})`,
+        { status: authenticated.status },
       );
     }
 

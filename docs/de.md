@@ -151,6 +151,11 @@ wird alle 12 Stunden erneut an Gladys gesendet, damit er nie als veraltet ersche
 
 ## Fehlerbehebung
 
+- **„Škoda kennt diese E-Mail-Adresse nicht“**: Der Identitätsdienst hat keine Škoda ID dafür (er
+  bot an, eine anzulegen). Gib die Adresse ein, mit der du dich in der MySkoda-App anmeldest, und
+  speichere; für eine unbekannte Adresse wird das Passwort nicht gesendet.
+- **„Deine Škoda ID ist noch nicht aktiviert“**: Bestätige sie mit der E-Mail von Škoda und speichere
+  dann erneut.
 - **„Das Konto hat die Anmeldung abgelehnt“**: Prüfe E-Mail-Adresse und Passwort (die der App) und
   speichere dann. Die Integration versucht es nicht von selbst erneut, damit das Konto nicht gesperrt
   wird.

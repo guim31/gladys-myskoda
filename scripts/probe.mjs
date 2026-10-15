@@ -7,8 +7,9 @@
 // plate, no position.
 //
 //   node scripts/probe.mjs
-//       signs in with a fake account: every step until the refusal of the
-//       password (expected outcome: "auth").
+//       signs in with a fake account: every step until the identity service
+//       refuses the address (expected outcome: "unknown-account"; the password
+//       is never posted for an unknown address).
 //   MYSKODA_EMAIL=… MYSKODA_PASSWORD=… node scripts/probe.mjs [--vehicles]
 //       a real account.
 // -----------------------------------------------------------------------------
@@ -46,7 +47,7 @@ const describe = (err) =>
   `${err.kind ?? err.name ?? 'error'}${err.status !== undefined ? ` (HTTP ${err.status})` : ''}`;
 
 try {
-  step('Account', fakeAccount ? 'fake (expect "auth")' : 'from MYSKODA_EMAIL');
+  step('Account', fakeAccount ? 'fake (expect "unknown-account")' : 'from MYSKODA_EMAIL');
   await client.connect();
   step('Sign-in + token exchange', 'OK');
   if (process.argv.includes('--vehicles')) {
@@ -79,5 +80,5 @@ try {
   }
 } catch (err) {
   step('Failed', describe(err));
-  process.exit(fakeAccount && err.kind === 'auth' ? 0 : 1);
+  process.exit(fakeAccount && ['unknown-account', 'auth'].includes(err.kind) ? 0 : 1);
 }

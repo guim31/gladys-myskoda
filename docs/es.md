@@ -149,6 +149,11 @@ de nuevo a Gladys cada 12 horas, para que nunca parezca caducado.
 
 ## Solución de problemas
 
+- **«Škoda no conoce este correo electrónico»**: el servicio de identidad no tiene ningún Škoda ID
+  para él (proponía crear uno). Introduzca la dirección con la que inicia sesión en la app MySkoda y
+  guarde; la contraseña no se envía para una dirección desconocida.
+- **«Su Škoda ID aún no está activado»**: confírmelo con el correo que le envió Škoda y vuelva a
+  guardar.
 - **«La cuenta ha rechazado el inicio de sesión»**: revise el correo y la contraseña (los de la
   aplicación) y guarde. La integración no lo vuelve a intentar sola, para no bloquear la cuenta.
 - **«Su cuenta debe aceptar primero nuevas condiciones»**: abra la aplicación MySkoda, acéptelas y

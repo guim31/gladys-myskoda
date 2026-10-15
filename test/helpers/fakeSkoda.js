@@ -7,6 +7,8 @@
 // Every request is recorded (`calls`), and the tests can change what a car
 // answers (`data`), make an endpoint fail (`fail`), cut the network
 // (`network`), refuse the password or ask for new terms (`signInOutcome`).
+// An unknown e-mail address is sent to the registration page, as a probe of
+// the real service showed (and a password posted after it gets a 500).
 // -----------------------------------------------------------------------------
 
 import { createHash } from 'node:crypto';
@@ -119,10 +121,12 @@ export function createFakeSkoda({ now = () => Date.now(), cars } = {}) {
     password: PASSWORD,
     spin: SPIN,
     spinTries: 3,
-    // 'ok' | 'terms' | 'throttled'
+    // 'ok' | 'terms' | 'throttled' | 'inactive' | 'no-password-page'
     signInOutcome: 'ok',
     network: true,
     signInCount: 0,
+    passwordsPosted: 0,
+    unknownEmail: false,
     refreshCount: 0,
     revokedRefreshTokens: new Set(),
     accessTokens: new Map(), // token → expiry (ms)
@@ -174,6 +178,7 @@ export function createFakeSkoda({ now = () => Date.now(), cars } = {}) {
     const path = url.pathname;
     if (path === '/oidc/v1/authorize') {
       fake.pendingChallenge = url.searchParams.get('code_challenge');
+      fake.unknownEmail = false;
       return redirect(
         `${IDENTITY}/signin-service/v1/signin/${CLIENT_ID}?relayState=${SIGNIN_RELAY}`,
         'idk_session=s1; Path=/; Secure; HttpOnly',
@@ -187,15 +192,30 @@ export function createFakeSkoda({ now = () => Date.now(), cars } = {}) {
         return html('<html>Forbidden</html>');
       }
       if (!hasCookie(init)) return html('<html>Session lost</html>');
+      if (form.get('email') !== EMAIL) {
+        fake.unknownEmail = true;
+        return redirect(`/signin-service/v1/${CLIENT_ID}/register?relayState=${SIGNIN_RELAY}`);
+      }
+      if (fake.signInOutcome === 'inactive') {
+        return redirect(
+          `/signin-service/v1/${CLIENT_ID}/login/identifier?relayState=x&error=login.errors.account_not_activated`,
+        );
+      }
+      // A page the integration does not know, without the password form.
+      if (fake.signInOutcome === 'no-password-page') return html('<html>Something else</html>');
       return redirect(
         `/signin-service/v1/${CLIENT_ID}/login/authenticate?relayState=${IDENTIFIER_RELAY}&email=${encodeURIComponent(form.get('email'))}`,
       );
     }
+    if (path === `/signin-service/v1/${CLIENT_ID}/register`) return html(page('signin'));
     if (path === `/signin-service/v1/${CLIENT_ID}/login/authenticate` && init.method === 'GET') {
       return html(page('identifier'));
     }
     if (path === `/signin-service/v1/${CLIENT_ID}/login/authenticate`) {
       fake.signInCount += 1;
+      fake.passwordsPosted += 1;
+      // What the real service does with a password posted for an unknown address.
+      if (fake.unknownEmail) return new Response('<html>Internal error</html>', { status: 500 });
       if (!hasCookie(init) || form.get('hmac') !== HMAC) return html('<html>Bad form</html>');
       if (fake.signInOutcome === 'throttled') {
         return redirect(
