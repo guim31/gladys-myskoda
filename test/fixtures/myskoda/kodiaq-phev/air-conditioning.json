@@ -1,0 +1,32 @@
+{
+  "estimatedDateTimeToReachTargetTemperature": "2025-01-12T09:27:49.145593452Z",
+  "state": "OFF",
+  "runningRequests": [],
+  "targetTemperature": {
+    "temperatureValue": 22.0,
+    "unitInCar": "CELSIUS"
+  },
+  "airConditioningWithoutExternalPower": true,
+  "airConditioningAtUnlock": false,
+  "windowHeatingEnabled": false,
+  "steeringWheelPosition": "LEFT",
+  "seatHeatingActivated": {
+    "frontLeft": false,
+    "frontRight": false
+  },
+  "chargerConnectionState": "CONNECTED",
+  "chargerLockState": "LOCKED",
+  "windowHeatingState": {
+    "front": "INVALID",
+    "rear": "OFF",
+    "unspecified": "INVALID"
+  },
+  "timers": [],
+  "carCapturedTimestamp": "2025-01-12T09:24:46Z",
+  "errors": [
+    {
+      "type": "UNAVAILABLE_TIMERS_INFORMATION",
+      "description": "APIs for obtaining air conditioning timers are not available"
+    }
+  ]
+}

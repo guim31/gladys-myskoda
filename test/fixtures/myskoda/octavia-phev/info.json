@@ -1,0 +1,180 @@
+{
+  "vin": "TMBMOCK0000000005",
+  "name": "Octavia",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-005-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB_ODP",
+  "specification": {
+    "title": "Škoda Octavia",
+    "manufacturingDate": "2022-02-03",
+    "model": "Octavia",
+    "modelYear": "2022",
+    "body": "Liftback",
+    "trimLevel": "STYLE",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "NX34VC",
+    "engine": {
+      "type": "TSI iV",
+      "powerInKW": 150,
+      "capacityInLiters": 1.4
+    },
+    "gearbox": {
+      "type": "A6F"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": []
+      },
+      {
+        "id": "AUTOMATION",
+        "statuses": []
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": []
+      },
+      {
+        "id": "DEPARTURE_TIMERS",
+        "statuses": []
+      },
+      {
+        "id": "GEO_FENCE",
+        "statuses": []
+      },
+      {
+        "id": "HONK_AND_FLASH",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "SPEED_ALERT",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "POWERPASS_TARIFFS",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_HEATING_SOURCE_ELECTRIC",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_FUEL",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SAVE_AND_ACTIVATE",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_MQB",
+        "statuses": []
+      },
+      {
+        "id": "FLEET_SUPPORTED",
+        "statuses": []
+      },
+      {
+        "id": "LOYALTY_PROGRAM_WORLDWIDE",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_SPEECH_GPS",
+        "statuses": []
+      },
+      {
+        "id": "FUEL_STATUS",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "WINDOW_HEATING",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING",
+        "statuses": []
+      }
+    ]
+  }
+}

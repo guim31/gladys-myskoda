@@ -1,0 +1,34 @@
+{
+  "state": "OFF",
+  "runningRequests": [],
+  "targetTemperature": {
+    "temperatureValue": 24.0,
+    "unitInCar": "CELSIUS"
+  },
+  "airConditioningWithoutExternalPower": true,
+  "steeringWheelPosition": "LEFT",
+  "chargerConnectionState": "DISCONNECTED",
+  "chargerLockState": "UNLOCKED",
+  "windowHeatingState": {
+    "front": "OFF",
+    "rear": "OFF",
+    "unspecified": "INVALID"
+  },
+  "timers": [],
+  "carCapturedTimestamp": "2024-12-16T15:02:09Z",
+  "outsideTemperature": {
+    "temperatureValue": 8.5,
+    "temperatureUnit": "CELSIUS",
+    "carCapturedTimestamp": "2024-12-17T07:53:01Z"
+  },
+  "errors": [
+    {
+      "type": "UNAVAILABLE_VEHICLE_INFORMATION",
+      "description": "APIs for obtaining seat heating status are not available"
+    },
+    {
+      "type": "UNAVAILABLE_TIMERS_INFORMATION",
+      "description": "APIs for obtaining air conditioning timers are not available"
+    }
+  ]
+}

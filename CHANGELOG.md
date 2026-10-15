@@ -12,44 +12,29 @@ the notes of the version's GitHub Release.
 
 ### Added
 
-- A working example of scene triggers, scene actions and dashboard widgets
-  (Gladys 5.1.0 or later).
-- `CHANGELOG.md`, rolled by the Release workflow.
-- A GitHub Release for every version, with its changelog section as notes: the
-  Gladys Supervision page links each version to the repository's releases.
-- CI runs the tests on Node 22 and 24, and builds the Docker image.
-- Dependabot keeps the npm dependencies and the GitHub Actions up to date.
-- `SECURITY.md` (how to report a vulnerability) and `CLAUDE.md` (project rules
-  for contributors and coding assistants).
-- Manifest tests: `version` matches `package.json`, `docker_image` is tagged
-  with it, descriptions hold 10 to 100 characters, placeholders are
-  multi-language objects.
-- The latitude and longitude fields show an example value as placeholder.
+- Škoda cars of a MySkoda account (Škoda ID) in Gladys: one device per car,
+  with the battery level, electric range, charging state, plugged in, charging,
+  charging power and time remaining, charge limit, climate control and its
+  temperature, outside temperature, locked, door, boot and window open, fuel
+  level and range, mileage — each car gets what its services offer.
+- The GPS position of each car, off by default.
+- Commands: start / stop charging, charge limit (50 to 100 %), climate control
+  on / off and its temperature. A command accepted by the cloud is held until
+  the car reports it (ten minutes at most).
+- Locking with the S-PIN (scene action and widget button); unlocking only as a
+  scene action, off by default ("Allow unlocking" in the configuration).
+- Scene trigger "Charge finished", with the battery level and the electric
+  range.
+- Scene actions "Refresh a Škoda", "Lock a Škoda" and "Unlock a Škoda".
+- Dashboard widget "My Škoda": battery, range, charge, climate, doors, last
+  update, and buttons to act on the car.
+- Configuration actions "Test the connection" and "Check the S-PIN".
+- Clear statuses when the sign-in cannot go on: e-mail address unknown to Škoda
+  (the password is then never sent), Škoda ID not activated, terms to accept
+  in the app, too many attempts.
+- Reads on the integration's own timer, every 15 to 120 minutes (30 by
+  default), under 30 calls an hour per account; the car is never woken up.
+- Texts in English, French, German and Spanish, and a documentation in the four
+  languages.
 
-### Changed
-
-- Node.js 22 or later is required (Node 20 is end-of-life).
-- Integration SDK 0.15.0. The tests now run against the fake Gladys of the
-  SDK, which refuses the payloads Gladys refuses.
-- The refresh interval is one minute minimum, the fastest Gladys polls a
-  device. The plug's power is only sent when it changes, and every 30
-  minutes otherwise.
-
-### Fixed
-
-- Gladys refused the devices of the Discovery tab: the weather station and
-  the plug declared their poll frequency in seconds instead of one of the
-  values Gladys accepts, and were never polled. They now poll every minute,
-  and the readings follow the refresh interval of the configuration.
-
-- The release commit no longer fails `npm run format:check`: the Release
-  workflow updates the manifest `version` and `docker_image` in place instead
-  of re-printing the whole file with `jq`.
-- The integration can write to `/data`: the image creates the directory owned
-  by the `node` user, a new Docker volume was owned by root.
-- A sub-container running the integration's own image follows it to the new
-  tag at each release, as well as in the manifest of the build summary: it kept
-  the previous tag, which may not exist on the registry. Sub-containers on a
-  third-party image (a broker, a database...) keep theirs.
-
-[Unreleased]: https://github.com/GladysAssistant/integration-template-js/commits/main
+[Unreleased]: https://github.com/guim31/gladys-myskoda/commits/main

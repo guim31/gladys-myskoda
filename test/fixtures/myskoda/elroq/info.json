@@ -1,0 +1,244 @@
+{
+  "vin": "TMBMOCK0000000002",
+  "name": "Elroq",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-002-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "WCAR",
+  "softwareVersion": "5.4",
+  "specification": {
+    "title": "Škoda Elroq",
+    "manufacturingDate": "2025-02-26",
+    "model": "Elroq",
+    "modelYear": "2025",
+    "body": "SUV",
+    "trimLevel": "85",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "PYLJK2",
+    "maxChargingPowerInKW": 125,
+    "battery": {
+      "capacityInKWh": 77
+    },
+    "engine": {
+      "type": "iV",
+      "powerInKW": 210
+    },
+    "gearbox": {
+      "type": "E1H"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": []
+      },
+      {
+        "id": "AUTOMATION",
+        "statuses": []
+      },
+      {
+        "id": "BATTERY_CHARGING_CARE",
+        "statuses": []
+      },
+      {
+        "id": "BATTERY_SUPPORT",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_PROFILES",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_STATIONS",
+        "statuses": []
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": ["INITIALLY_DISABLED"]
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "MAP_UPDATE",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_REMOTE_UPDATE",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_INFORMATION",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "PLUG_AND_CHARGE",
+        "statuses": []
+      },
+      {
+        "id": "POI_SEARCH",
+        "statuses": []
+      },
+      {
+        "id": "READINESS",
+        "statuses": []
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "ROUTING",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "TRAFFIC_INFORMATION",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "ACCIDENT_DAMAGE_MANAGEMENT",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SAVE_AND_ACTIVATE",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_SMART_SETTINGS",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_TIMERS",
+        "statuses": []
+      },
+      {
+        "id": "CARE_AND_INSURANCE",
+        "statuses": []
+      },
+      {
+        "id": "CHARGE_MODE_SELECTION",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_MEB",
+        "statuses": []
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": []
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": []
+      },
+      {
+        "id": "DRIVING_SCORE",
+        "statuses": []
+      },
+      {
+        "id": "EV_ROUTE_PLANNING",
+        "statuses": []
+      },
+      {
+        "id": "EXTENDED_CHARGING_SETTINGS",
+        "statuses": []
+      },
+      {
+        "id": "GUEST_USER_MANAGEMENT",
+        "statuses": []
+      },
+      {
+        "id": "ONLINE_SPEECH_GPS",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "POWERPASS_TARIFFS",
+        "statuses": []
+      },
+      {
+        "id": "PREDICTIVE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_PLANNING_10_CHARGERS",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "UNAVAILABILITY_STATUSES",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_SERVICES_BACKUPS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP_TRIGGER",
+        "statuses": []
+      },
+      {
+        "id": "WINDOW_HEATING",
+        "statuses": []
+      }
+    ]
+  }
+}

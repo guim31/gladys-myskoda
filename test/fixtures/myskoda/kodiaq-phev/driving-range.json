@@ -1,0 +1,16 @@
+{
+  "carType": "hybrid",
+  "totalRangeInKm": 215,
+  "primaryEngineRange": {
+    "engineType": "gasoline",
+    "currentSoCInPercent": 39,
+    "currentFuelLevelInPercent": 39,
+    "remainingRangeInKm": 200
+  },
+  "secondaryEngineRange": {
+    "engineType": "electric",
+    "currentSoCInPercent": 16,
+    "remainingRangeInKm": 15
+  },
+  "carCapturedTimestamp": "2025-01-12T09:25:58Z"
+}

@@ -1,0 +1,109 @@
+{
+  "vin": "TMBMOCK0000000006",
+  "name": "CitigoE iV",
+  "workshopModeEnabled": false,
+  "licensePlate": "XX-006-XX",
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB",
+  "specification": {
+    "title": "Škoda CitigoE iV",
+    "manufacturingDate": "2020-08-12",
+    "model": "CitigoE iV",
+    "modelYear": "2020",
+    "body": "Hatchback",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "NE13E2",
+    "engine": {
+      "powerInKW": 61
+    },
+    "gearbox": {
+      "type": "E1F"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "AUTOMATION",
+        "statuses": []
+      },
+      {
+        "id": "DEPARTURE_TIMERS",
+        "statuses": []
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": []
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": []
+      },
+      {
+        "id": "STATE",
+        "statuses": []
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": []
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": []
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": []
+      },
+      {
+        "id": "POWERPASS_TARIFFS",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING_HEATING_SOURCE_ELECTRIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING_MQB",
+        "statuses": []
+      },
+      {
+        "id": "LOYALTY_PROGRAM_WORLDWIDE",
+        "statuses": []
+      },
+      {
+        "id": "OUTSIDE_TEMPERATURE",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": []
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "CHARGING",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      },
+      {
+        "id": "AIR_CONDITIONING",
+        "statuses": []
+      }
+    ]
+  }
+}

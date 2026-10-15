@@ -1,0 +1,15 @@
+{
+  "overall": {
+    "doorsLocked": "YES",
+    "locked": "YES",
+    "doors": "CLOSED",
+    "windows": "CLOSED",
+    "lights": "ON"
+  },
+  "detail": {
+    "sunroof": "UNSUPPORTED",
+    "trunk": "CLOSED",
+    "bonnet": "CLOSED"
+  },
+  "carCapturedTimestamp": "2024-12-05T18:27:30Z"
+}

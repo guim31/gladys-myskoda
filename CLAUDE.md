@@ -16,12 +16,13 @@ its only runtime dependency. It started from the official JavaScript template.
 ```bash
 npm install
 npm test                                  # node --test, the built-in runner
-node --test test/devices.test.js          # one file
-node --test --test-name-pattern "plug"    # tests whose name matches
+node --test test/runtime.test.js          # one file
+node --test --test-name-pattern "charge"  # tests whose name matches
 npm run lint                              # ESLint
 npm run format:check                      # Prettier, as the CI runs it
 npm run format                            # Prettier, fix in place
-npx github:GladysAssistant/integration-store .   # store admission checks
+npx -y github:GladysAssistant/integration-store --skip-image-check .   # store checks
+node scripts/probe.mjs                    # real sign-in with a fake account (needs the network)
 ```
 
 The CI (`.github/workflows/ci.yml`) runs `format:check`, `lint` and `test` on
@@ -31,16 +32,23 @@ pushing.
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+index.js                          SDK wiring only (src/app.js registers the handlers)
+src/app.js                        handlers of the Gladys client, shared with the tests
+src/myskoda.js                    runtime: timer, reads, publication, commands, trigger, S-PIN
+src/myskoda/auth.js               VW Group sign-in (OIDC + PKCE, login pages), token exchange/refresh
+src/myskoda/client.js             MySkoda API: tokens, garage, info, reads, commands
+src/myskoda/http.js, errors.js    fetch wrapper (manual redirects, cookie jar); errors → kinds
+src/devices/vehicle.js            answers → snapshot, Gladys device, states, commands
+src/store.js                      /data/myskoda.json: session + per-car memory (0600, atomic)
+src/messages.js, src/i18n.js      user texts (4 languages), feature names
+src/scenes.js                     scene actions refresh_vehicle, lock_vehicle, unlock_vehicle
+src/widgets.js                    dashboard widget `vehicle`
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
+scripts/probe.mjs                 sign-in probe against the real cloud (nothing sensitive printed)
 gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (same sections)
+test/                             node --test; SDK fake Gladys + test/helpers/fakeSkoda.js
+test/fixtures/myskoda/            cloud answers from skodaconnect/myskoda's fixtures (MIT), anonymized
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,8 +78,16 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** comes in four languages (`en`, `fr`, `de` with "du",
+  `es` with "usted"): action messages, widget and error texts, feature names,
+  manifest texts, and `docs/{en,fr,de,es}.md` with the same sections
+  (`test/i18n.test.js`).
+- **Logs.** Info level is for the lifecycle only (start, cars found, one line
+  per user command, a failure and its recovery). A failure that repeats is
+  logged once (warn), then at debug level until it recovers; a cloud outage is
+  one failure whatever the number of cars. Never a password, S-PIN, token,
+  e-mail address, full VIN, plate or position. `test/runtime.test.js` checks
+  both.
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
 
@@ -197,6 +213,58 @@ code de ce dépôt. Compléter ce fichier quand un nouveau piège est découvert
 - Les filtres de scène ne font qu'égalité et appartenance : un seuil reste le travail d'un capteur.
 - **Les clés de widgets, de déclencheurs et d'actions sont figées une fois publiées.**
 - `gladys_version` `>=5.1.0` dès qu'il y a widgets, déclencheurs ou actions de scène.
+
+## MySkoda (cloud Škoda / groupe VW)
+
+- Protocole repris de `skodaconnect/myskoda` (MIT, crédité dans le README et
+  `test/fixtures/myskoda/README.md`) : `client_id` de l'appli Android, connexion OIDC + PKCE sur
+  `identity.vwgroup.io`, API `mysmob.api.connect.skoda-auto.cz`. L'intégration HA
+  `skodaconnect/homeassistant-myskoda` est sous **MIT** (pas Apache-2.0 comme supposé). Aucune réponse
+  réelle capturée ici : le proxy des sessions de code **refuse `identity.vwgroup.io`** (CONNECT 403)
+  et le `fetch` de Node n'utilise pas `HTTPS_PROXY` ; le test réel passe par `scripts/probe.mjs`
+  lancé ailleurs.
+- **Connexion** : la page de login porte un script `window._IDK = { templateModel: {…JSON…},
+csrf_token: '…' }` (pas du JSON : clés sans guillemets) ; on lit `templateModel` (ligne JSON) et
+  `csrf_token` par expressions régulières. Les pages gardent leur session en **cookies** : le
+  client HTTP a un pot de cookies par hôte et suit les redirections **à la main** (`redirect:
+'manual'`, `Location` relatives possibles) jusqu'à `myskoda://redirect/login/?code=…`. Refus :
+  `error=login.errors.password_invalid` (→ `auth`), `error=login.error.throttled` (→ `blocked`),
+  redirection vers `terms-and-conditions` ou `consent/marketing` (→ `consent`, à accepter dans
+  l'appli). Ces cas arrêtent tout jusqu'au prochain enregistrement de la configuration.
+- **E-mail inconnu** (sonde réelle de l'orchestrateur, 15/10/2026) : `POST …/login/identifier`
+  répond **303 vers `/signin-service/v1/<client>/register`** (page d'inscription, 200, qui porte
+  elle aussi un `_IDK` avec HMAC). Poster le mot de passe ensuite donne un **500**. Toute redirection
+  vers `/register` (ou page sans formulaire de mot de passe, `template` ≠ `loginAuthenticate`) après
+  l'identifiant = `unknown-account`, bloquant, et le mot de passe n'est jamais envoyé. Un code
+  `error=` d'activation (`not_activated`, `unverified`…) = `account-inactive`.
+- **Jetons** : accès 1 h, rafraîchissement ~180 jours (`refresh-token?tokenType=CONNECT`). Le jeton
+  d'accès est renouvelé 10 min avant expiration ; un 401 force un renouvellement et un seul nouvel
+  essai ; un rafraîchissement refusé (4xx) refait une connexion par mot de passe, une fois.
+- **Lectures** selon les `capabilities` de `/v2/garage/vehicles/{vin}` (une capacité avec un
+  `statuses` non vide est indisponible : licence expirée, invité…) : `CHARGING` → `charging`,
+  `AIR_CONDITIONING` ou `OUTSIDE_TEMPERATURE` → `air-conditioning`, `STATE` → `vehicle-status` et
+  `driving-range`, `PARKING_POSITION` + GPS → `positions`, le kilométrage par
+  `/v3/vehicle-maintenance/vehicles/{vin}` une fois par heure. **Jamais** `vehicle-wakeup` (quota
+  quotidien, batterie 12 V) ni `vehicle-health-report` (la bibliothèque l'espace de 6 h : il a
+  déclenché la protection de batterie de Citigo et Karoq, issue HA #468).
+- Pas de quota publié : budget de 30 appels/heure/compte, 429 = pause de 30 min, 30 min par défaut
+  comme HA. L'API renvoie parfois un kilométrage plus ancien (plus bas) ou 429496729 : on ne le fait
+  jamais baisser et on ignore ≥ 400 000 000. Température extérieure hors ]-50 ; 60[ ignorée.
+- **Branchée** : `chargerConnectionState` de `air-conditioning` d'abord (choix de HA), sinon l'état
+  de charge (`CONNECT_CABLE` = débranchée). La fixture Elroq montre les deux en désaccord.
+- **Limite de charge** proposée si `EXTENDED_CHARGING_SETTINGS` ou (`CHARGING` sans `CHARGING_MQB`),
+  50–100 % par 10 (`PUT set-charge-limit`). Climatisation 15,5–30 °C par 0,5, consigne enregistrée
+  dans la voiture (`settings/target-temperature`).
+- **S-PIN** (`currentSpin`) : verrouiller / déverrouiller, et `/v1/spin/verify` (action « Vérifier
+  le S-PIN »). Un S-PIN faux compte comme un essai (le cloud le bloque après quelques-uns, 412 sur
+  une commande) : une fois refusé, il n'est plus envoyé avant un nouvel enregistrement.
+- **Sécurité** : verrouillé, portes, coffre, fenêtres sont en lecture seule. Le déverrouillage n'est
+  qu'une action de scène, refusée tant que `allow_unlock` est faux (défaut). Pas de bouton de
+  déverrouillage dans le widget, pas de chauffage d'appoint (brûleur).
+- Pas de MQTT : l'appli reçoit ses événements par MQTT authentifié via Firebase Cloud Messaging
+  (enregistrement FCM, broker `mqtt.messagehub.de`) ; trop lourd pour la sandbox, écarté.
+- Le faux Gladys du SDK renvoie le contenu d'un widget dans `ack.data.content` et les sorties d'une
+  action de scène dans `ack.data.outputs`.
 
 ## Store
 

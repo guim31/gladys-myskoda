@@ -1,0 +1,148 @@
+{
+  "vin": "TMBMOCK0000000009",
+  "name": "Karoq",
+  "workshopModeEnabled": false,
+  "state": "ACTIVATED",
+  "devicePlatform": "MBB_ODP",
+  "specification": {
+    "title": "Škoda Karoq",
+    "manufacturingDate": "2021-07-15",
+    "model": "Karoq",
+    "modelYear": "2022",
+    "body": "SUV",
+    "trimLevel": "SE L",
+    "systemCode": "UNKNOWN",
+    "systemModelId": "NU74ND",
+    "engine": {
+      "type": "TSI",
+      "powerInKW": 110,
+      "capacityInLiters": 1.5
+    },
+    "gearbox": {
+      "type": "A7F"
+    }
+  },
+  "renders": [],
+  "compositeRenders": [],
+  "capabilities": {
+    "capabilities": [
+      {
+        "id": "ACCESS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "DEALER_APPOINTMENT",
+        "statuses": ["INITIALLY_DISABLED"]
+      },
+      {
+        "id": "GEO_FENCE",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "HONK_AND_FLASH",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "MEASUREMENTS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "NEWS",
+        "statuses": ["LICENSE_MISSING"]
+      },
+      {
+        "id": "PARKING_POSITION",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "ROADSIDE_ASSISTANT",
+        "statuses": []
+      },
+      {
+        "id": "SPEED_ALERT",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "STATE",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "THEFT_WARNING",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "TRIP_STATISTICS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "VEHICLE_HEALTH_INSPECTION",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "WARNING_LIGHTS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "VEHICLE_WAKE_UP",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "LOYALTY_PROGRAM",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_FUEL",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "CUBIC",
+        "statuses": []
+      },
+      {
+        "id": "SUBSCRIPTIONS",
+        "statuses": []
+      },
+      {
+        "id": "DESTINATIONS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "ICE_VEHICLE_RTS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "DIGICERT",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "VEHICLE_HEALTH_WARNINGS",
+        "statuses": []
+      },
+      {
+        "id": "PAY_TO_PARK",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "FUEL_STATUS",
+        "statuses": ["LICENSE_MISSING", "LICENSE_EXPIRED"]
+      },
+      {
+        "id": "SERVICE_PARTNER",
+        "statuses": []
+      },
+      {
+        "id": "ROUTE_IMPORT",
+        "statuses": []
+      },
+      {
+        "id": "MISUSE_PROTECTION",
+        "statuses": []
+      },
+      {
+        "id": "CARE_AND_INSURANCE",
+        "statuses": []
+      }
+    ]
+  },
+  "licensePlate": "XX-009-XX"
+}

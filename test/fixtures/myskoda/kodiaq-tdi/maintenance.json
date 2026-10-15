@@ -1,0 +1,10 @@
+{
+  "maintenanceReport": {
+    "capturedAt": "2024-11-08T09:30:02Z",
+    "inspectionDueInDays": 576,
+    "inspectionDueInKm": 20400,
+    "mileageInKm": 9647,
+    "oilServiceDueInDays": 473,
+    "oilServiceDueInKm": 16100
+  }
+}

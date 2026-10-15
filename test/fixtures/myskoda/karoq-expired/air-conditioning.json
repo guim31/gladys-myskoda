@@ -1,0 +1,25 @@
+{
+  "state": "INVALID",
+  "runningRequests": [],
+  "steeringWheelPosition": "RIGHT",
+  "windowHeatingState": {
+    "front": "INVALID",
+    "rear": "INVALID",
+    "unspecified": "INVALID"
+  },
+  "timers": [],
+  "errors": [
+    {
+      "type": "UNAVAILABLE_VEHICLE_INFORMATION",
+      "description": "APIs for obtaining seat heating status are not available"
+    },
+    {
+      "type": "UNAVAILABLE_TIMERS_INFORMATION",
+      "description": "APIs for obtaining air conditioning timers are not available"
+    },
+    {
+      "type": "UNAVAILABLE_CHARGING_INFORMATION",
+      "description": "APIs for obtaining power cable connection/lock information are not available"
+    }
+  ]
+}

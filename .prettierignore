@@ -2,3 +2,5 @@ node_modules/
 package-lock.json
 /data/
 *.log
+# Pages of the VW Group sign-in service, kept as the server sends them.
+test/fixtures/myskoda/auth/

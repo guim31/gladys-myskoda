@@ -1,0 +1,11 @@
+{
+  "carType": "gasoline",
+  "totalRangeInKm": 750,
+  "primaryEngineRange": {
+    "engineType": "gasoline",
+    "currentSoCInPercent": 90,
+    "currentFuelLevelInPercent": 90,
+    "remainingRangeInKm": 750
+  },
+  "carCapturedTimestamp": "2024-11-09T10:23:55Z"
+}
