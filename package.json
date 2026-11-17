@@ -1,6 +1,6 @@
 {
   "name": "gladys-myskoda",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Gladys Assistant integration for Škoda connected cars (MySkoda cloud): battery, charging, climate, locks.",
   "type": "module",
